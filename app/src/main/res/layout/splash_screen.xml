@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    android:gravity="center">
+
+       <com.airbnb.lottie.LottieAnimationView
+           android:id="@+id/animation_view"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="16dp"
+           android:layout_below="@id/textView2"
+           app:lottie_fileName="news.json"
+           app:lottie_autoPlay="true"
+           app:lottie_loop="true"/>
+
+       <TextView
+           android:id="@+id/textView2"
+           android:layout_width="wrap_content"
+           android:layout_marginStart="18dp"
+           android:layout_marginEnd="10dp"
+           android:textAllCaps="true"
+           android:lines="2"
+           android:textSize="24sp"
+           android:textColor="@color/black"
+           android:layout_marginBottom="10dp"
+           android:layout_height="wrap_content"
+
+           android:text="Welcome to the Latest News, Now News will appear........." />
+
+</RelativeLayout>
+</layout>
