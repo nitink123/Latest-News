@@ -9,7 +9,7 @@ import com.example.latestnews.databinding.SplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
     lateinit var binding: SplashScreenBinding
-    private val SPLASH_DELAY_MS = 3000 // 3 seconds
+    private val SPLASH_DELAY_MS = 1000 // 3 seconds
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
