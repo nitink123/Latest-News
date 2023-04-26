@@ -1,10 +1,12 @@
 package com.example.latestnews
 
 import android.app.Application
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -50,25 +52,46 @@ class ViewPagerFragment : Fragment(),handleonclick{
         viewModel.newsResponseCategory.observe(viewLifecycleOwner) { result->
             val ans = result.body()
             if (ans != null) {
+                  binding.progressCircular.visibility = View.GONE
                 list.addAll(ans.articles)
                 newsAdapter.notifyDataSetChanged()
             } else {
                 //  Buil
+                binding.nothingTv.text = "This is the $category fragment and we are not getting response"
 //                Toast.makeText(this,"response is not generated", Toast.LENGTH_LONG)
                 // Handle null result, if needed
             }
 
         }
-//        binding.nothingTv.text = "This is the $category fragment"
+        binding.nothingTv.text = "This is the $category fragment"
         return binding.root
+    }
+
+
+    fun onbackPressed(){
+        binding.webviewDesc.visibility = View.GONE
+        binding.webviewDesc.removeAllViews()
     }
 
 
 
 
+
     override fun handleclick(url: String) {
+        binding.webviewDesc.webViewClient = object : WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                binding.progressCircular.visibility = View.VISIBLE// show the progress bar
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                binding.progressCircular.visibility = View.GONE
+             //   binding.progressBar.visibility = View.GONE // hide the progress bar
+            }
+        }
+
         binding.webviewDesc.visibility = View.VISIBLE
-        binding.webviewDesc.webViewClient = WebViewClient()
         binding.webviewDesc.loadUrl(url)
     }
 

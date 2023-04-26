@@ -66,4 +66,7 @@ class viewpagerAdapter(fragmentManager: FragmentManager,context: Context) : Frag
 
 
 
+
+
+
 }

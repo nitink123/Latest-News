@@ -5,7 +5,7 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_shadow_end_color"
+    android:background="@drawable/design_backgrounf"
     tools:context=".MainActivity">
 
 <!--   <com.airbnb.lottie.LottieAnimationView-->
@@ -32,14 +32,15 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="open tablayout"
-        android:layout_marginStart="50dp"
-        android:layout_gravity="bottom"/>
+        android:text="open category wise news"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal|bottom"/>
 
    <ProgressBar
        android:id="@+id/progress_circular"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
+       android:text="loading...."
        android:layout_gravity="center"/>
 
     <WebView
