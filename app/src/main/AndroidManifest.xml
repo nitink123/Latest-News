@@ -26,6 +26,11 @@
             android:screenOrientation="fullSensor">
 
         </activity>
+        <activity android:name=".tablayoutActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+
+        </activity>
     </application>
     <meta-data
         android:name="com.example.app.MyGlideModule"

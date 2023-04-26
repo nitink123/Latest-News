@@ -1,6 +1,7 @@
 package com.example.latestnews
 
 import android.app.usage.NetworkStats
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.hardware.SensorManager
 import android.net.Network
@@ -10,11 +11,13 @@ import android.util.Log
 import android.view.OrientationEventListener
 import android.view.View
 import android.webkit.WebViewClient
+import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.latestnews.databinding.ActivityMainBinding
+import kotlinx.coroutines.coroutineScope
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +28,6 @@ class MainActivity : AppCompatActivity(),handleonclick {
       lateinit var adapter: NewsAdapter
       lateinit var newsVM: newsVM
       private var list = mutableListOf<Article>()
-    private var currentOrientation = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        binding = ActivityMainBinding.inflate(layoutInflater)
@@ -44,9 +46,14 @@ class MainActivity : AppCompatActivity(),handleonclick {
             binding.mainRv.adapter = adapter
 
 
-        newsVM = newsVM()
+        newsVM = newsVM(application)
         newsVM = ViewModelProvider(this)[newsVM::class.java]
 
+        binding.button.setOnClickListener {
+            binding.button.visibility = View.GONE
+            val intent  = Intent(this,tablayoutActivity::class.java)
+            startActivity(intent)
+        }
 
 
         newsVM.newsResponse.observe(this, Observer { result ->
@@ -71,8 +78,11 @@ class MainActivity : AppCompatActivity(),handleonclick {
 
 
     override fun onBackPressed() {
-        binding.webviewDesc.visibility = View.GONE
-        binding.webviewDesc.removeAllViews()
+
+            binding.webviewDesc.visibility = View.GONE
+            binding.webviewDesc.removeAllViews()
+     //   binding.button.visibility = View.VISIBLE
+
     }
 
     override fun handleclick(url: String) {

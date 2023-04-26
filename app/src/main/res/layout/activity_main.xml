@@ -22,10 +22,19 @@
         android:id="@+id/main_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="34dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
       />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open tablayout"
+        android:layout_marginStart="50dp"
+        android:layout_gravity="bottom"/>
 
    <ProgressBar
        android:id="@+id/progress_circular"

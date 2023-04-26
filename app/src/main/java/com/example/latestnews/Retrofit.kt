@@ -17,11 +17,13 @@ interface Retrofit {
 
    @GET("v2/top-headlines?apiKey=$API_KEY")
    fun getNews(@Query("country") country : String) : Call<newsData>
+
+    @GET("v2/top-headlines?apiKey=$API_KEY")
+    fun getNewsCate0goryWise(@Query("country") country : String,@Query("category") category: String) : Call<newsData>
 }
 
 object NewsService {
     val newInstance: com.example.latestnews.Retrofit
-
     init {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
